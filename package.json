@@ -1,0 +1,35 @@
+{
+  "name": "vibecore",
+  "version": "0.1.0",
+  "description": "Reliable Vibe Coding via Markdown Cartridges - Same prompt, same output, every time",
+  "main": "index.js",
+  "scripts": {
+    "lint:cartridge": "node validators/cartridge-lint.js",
+    "validate:all": "node scripts/validate-all.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai-coding",
+    "cursor",
+    "lovable",
+    "v0",
+    "deterministic",
+    "cartridges",
+    "scaffolding",
+    "code-generation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/vibecore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/vibecore/issues"
+  },
+  "homepage": "https://github.com/yourusername/vibecore#readme"
+}

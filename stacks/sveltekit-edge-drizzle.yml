@@ -1,0 +1,69 @@
+# SvelteKit + Edge + Drizzle Stack
+# Edge-first with Cloudflare Workers optimization
+
+name: sveltekit-edge-drizzle
+runtime: node@20
+pkgManager: pnpm
+language: typescript-strict
+framework: sveltekit@2
+ui:
+  - svelte@4
+  - tailwindcss@3
+  - skeleton-ui
+state:
+  - svelte-stores
+  - svelte-query
+api: sveltekit-server-routes
+orm: drizzle
+db: 
+  - d1-cloudflare
+  - neon-postgres
+auth: lucia-auth
+tests:
+  - vitest
+  - playwright
+lint: eslint-prettier
+build: vite
+repo: single
+deploy: cloudflare-workers
+
+forbidden:
+  # UI frameworks
+  - react
+  - vue
+  - solid
+  - angular
+  
+  # Frameworks
+  - next
+  - nuxt
+  - remix
+  
+  # State
+  - redux
+  - zustand
+  - pinia
+  - mobx
+  
+  # API
+  - graphql
+  - trpc
+  
+  # ORMs (Prisma doesn't work on edge)
+  - prisma
+  - typeorm
+  
+  # Auth
+  - nextauth
+  - clerk
+  - supabase-auth
+  
+  # Non-edge compatible
+  - fs-operations
+  - child-process
+  - node-specific-apis
+
+environment:
+  NODE_VERSION: "20.x"
+  DATABASE_URL: "<d1-or-neon-url>"
+  LUCIA_SECRET: "<generated>"

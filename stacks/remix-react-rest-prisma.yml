@@ -1,0 +1,59 @@
+# Remix + React + REST + Prisma Stack
+# SSR-first with built-in data loading patterns
+
+name: remix-react-rest-prisma
+runtime: node@20
+pkgManager: pnpm
+language: typescript-strict
+framework: remix@2
+ui:
+  - react@18
+  - tailwindcss@3
+state:
+  - remix-built-in
+  - react-query@5-optional
+api: rest-with-zod
+orm: prisma@5
+db: postgres
+auth: remix-auth
+tests:
+  - vitest
+  - playwright
+lint: eslint-prettier
+build: remix-build
+repo: single
+deploy: fly-io
+
+forbidden:
+  # Frameworks
+  - next
+  - gatsby
+  - vite-spa
+  
+  # UI
+  - vue
+  - svelte
+  - solid
+  
+  # API
+  - graphql
+  - trpc
+  
+  # State (Remix handles most)
+  - redux
+  - zustand
+  - mobx
+  
+  # ORMs
+  - drizzle
+  - typeorm
+  
+  # Auth
+  - nextauth
+  - clerk
+  - supabase-auth
+
+environment:
+  NODE_VERSION: "20.x"
+  DATABASE_URL: "postgresql://..."
+  SESSION_SECRET: "<generated>"

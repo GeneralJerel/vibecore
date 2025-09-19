@@ -1,0 +1,145 @@
+name: Cartridge Proposal
+description: Propose a new cartridge for the repository
+title: "[Cartridge]: "
+labels: ["cartridge", "proposal"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a new cartridge! Please fill out the information below to help us understand your proposal.
+
+  - type: input
+    id: cartridge-name
+    attributes:
+      label: Cartridge Name
+      description: What should this cartridge be called?
+      placeholder: ex. auth-oauth2, payment-stripe, analytics-posthog
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Target Tier
+      description: Which tier is this cartridge targeting?
+      options:
+        - prototype (fast iteration, minimal guardrails)
+        - productizing (team-ready with tests)
+        - production (enterprise-grade with observability)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stack
+    attributes:
+      label: Target Stack
+      description: Which stack preset will this cartridge use?
+      options:
+        - next-react-trpc-prisma
+        - remix-react-rest-prisma
+        - nuxt-vue-pinia-drizzle
+        - sveltekit-edge-drizzle
+        - Other (please specify)
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this cartridge solve? Why is it needed?
+      placeholder: |
+        Currently, when teams need to implement X, they face inconsistencies in...
+        This cartridge would standardize...
+    validations:
+      required: true
+
+  - type: textarea
+    id: inputs-outputs
+    attributes:
+      label: Inputs and Outputs
+      description: What inputs will the cartridge accept and what will it generate?
+      placeholder: |
+        Inputs:
+        - resourceName: The name of the resource
+        - fields: Array of field definitions
+        
+        Outputs:
+        - API routes at /api/...
+        - UI components in /components/...
+        - Database migrations
+    validations:
+      required: true
+
+  - type: textarea
+    id: guardrails
+    attributes:
+      label: Guardrails
+      description: What should be explicitly forbidden or enforced?
+      placeholder: |
+        Forbidden:
+        - Direct database access from client
+        - Unvalidated inputs
+        
+        Required:
+        - All API calls must be authenticated
+        - Input validation with Zod
+    validations:
+      required: true
+
+  - type: textarea
+    id: quality-gates
+    attributes:
+      label: Quality Gates
+      description: What commands should pass before considering the implementation complete?
+      placeholder: |
+        ```bash
+        pnpm lint
+        pnpm typecheck
+        pnpm test
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example Usage
+      description: Provide a simple example of how this cartridge would be used
+      placeholder: |
+        When a user pastes this cartridge with inputs:
+        ```
+        resourceName: Product
+        fields: [name, price, description]
+        ```
+        
+        It would generate:
+        - CRUD API at /api/products
+        - Admin UI at /admin/products
+        - etc.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing cartridges to ensure this doesn't duplicate functionality
+        - label: This cartridge follows the single responsibility principle
+        - label: The cartridge is specific to one stack (not trying to be universal)
+        - label: I am willing to contribute the initial implementation
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or references that would help
+      placeholder: |
+        Related issues: #123
+        Similar patterns in other tools: ...
+        References: ...
+    validations:
+      required: false

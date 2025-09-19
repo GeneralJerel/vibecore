@@ -1,0 +1,80 @@
+# Next.js + React + tRPC + Prisma Stack
+# The default full-stack TypeScript setup for modern web apps
+
+name: next-react-trpc-prisma
+runtime: node@20
+pkgManager: pnpm
+language: typescript-strict
+framework: next@15-app-router
+ui:
+  - react@18
+  - tailwindcss@3
+  - shadcn-ui
+state:
+  - zustand
+  - react-query@5
+api: trpc@10
+orm: prisma@5
+db: postgres
+auth: authjs@5
+tests:
+  - vitest
+  - playwright
+lint: eslint-prettier
+build: next-build
+repo: single-or-turbo
+deploy: vercel-node
+
+# Explicitly forbidden to prevent drift
+forbidden:
+  # UI frameworks
+  - vue
+  - svelte
+  - solid
+  - angular
+  
+  # API patterns
+  - graphql
+  - rest-without-trpc
+  - grpc
+  
+  # State management
+  - redux
+  - mobx
+  - valtio
+  
+  # Databases
+  - mongodb
+  - dynamodb
+  
+  # ORMs
+  - drizzle
+  - typeorm
+  - sequelize
+  - raw-sql
+  
+  # Auth
+  - clerk
+  - supabase-auth
+  - firebase-auth
+  - auth0
+  
+  # Routing
+  - pages-router
+  - react-router
+  
+  # Testing
+  - jest
+  - cypress
+  
+  # Package managers
+  - npm
+  - yarn
+  - bun
+
+# Environment requirements
+environment:
+  NODE_VERSION: "20.x"
+  DATABASE_URL: "postgresql://..."
+  NEXTAUTH_URL: "http://localhost:3000"
+  NEXTAUTH_SECRET: "<generated>"
