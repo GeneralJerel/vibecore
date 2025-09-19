@@ -4,7 +4,7 @@
 [![Cartridges](https://img.shields.io/badge/cartridges-12-blue)]()
 [![Stacks](https://img.shields.io/badge/stacks-4-green)]()
 
-> Same prompt → Same output. Every time. Across all AI coding tools.
+> reliable prompting → realiable output. Every time. Across all AI coding tools.
 
 ## The Problem We Solve
 
