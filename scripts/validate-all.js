@@ -7,7 +7,7 @@ const CartridgeLinter = require('../validators/cartridge-lint');
 console.log('🚀 VibeCore - Validating All Cartridges\n');
 
 const cartridgesDir = path.join(__dirname, '..', 'cartridges');
-const tiers = ['prototype', 'productizing', 'production'];
+const tiers = ['prototyping', 'production'];
 
 let totalFiles = 0;
 let validFiles = 0;

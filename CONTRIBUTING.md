@@ -55,9 +55,8 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 
 ### 1. Choose the Right Tier
 
-- **prototype/**: For rapid experimentation, minimal requirements
-- **productizing/**: For team collaboration, includes testing
-- **production/**: For enterprise use, full observability
+- **prototyping/**: Frontend-only with mock data, for UI/UX validation
+- **production/**: Full-stack with real backend, for deployable applications
 
 ### 2. Select a Stack
 

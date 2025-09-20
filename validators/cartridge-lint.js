@@ -25,7 +25,7 @@ const REQUIRED_SECTIONS = [
 ];
 
 // Valid tiers
-const VALID_TIERS = ['prototype', 'productizing', 'production'];
+const VALID_TIERS = ['prototyping', 'production'];
 
 // Valid statuses
 const VALID_STATUSES = ['draft', 'stable', 'deprecated'];

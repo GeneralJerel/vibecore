@@ -35,10 +35,9 @@ Pre-defined technology combinations that work well together:
 - `sveltekit-edge-drizzle` - Edge-optimized
 
 ### 2. Tiers
-Three levels of strictness based on your needs:
-- **Prototype** - Fast iteration, minimal guardrails
-- **Productizing** - Team-ready with testing and conventions
-- **Production** - Enterprise-grade with full observability
+Two distinct approaches based on your needs:
+- **Prototyping** - Frontend-only with mock data for rapid UI/UX iteration
+- **Production** - Full-stack with real backend for deployable applications
 
 ### 3. Cartridges
 Specific features or scaffolds that follow a stack:

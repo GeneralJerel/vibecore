@@ -1,6 +1,6 @@
 ---
 cartridge: true
-name: "Next.js Baseline (Production Enterprise)"
+name: "Next.js Baseline (Production)"
 tier: production
 stack: next-react-trpc-prisma
 version: 2.0.0
@@ -8,7 +8,7 @@ owner: "@vibecore"
 status: stable
 ---
 
-# Next.js Baseline (Production Enterprise) — v2.0.0
+# Next.js Baseline (Production) — v2.0.0
 
 ## Purpose
 - **What:** Enterprise-grade Next.js application with full observability, security, and reliability

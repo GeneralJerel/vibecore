@@ -1,7 +1,7 @@
 # VibeCore: Reliable Vibe Coding via Markdown Cartridges
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Cartridges](https://img.shields.io/badge/cartridges-12-blue)]()
+[![Cartridges](https://img.shields.io/badge/cartridges-4-blue)]()
 [![Stacks](https://img.shields.io/badge/stacks-4-green)]()
 
 > reliable prompting → realiable output. Every time. Across all AI coding tools.
@@ -21,45 +21,68 @@ AI coding tools (Cursor, Lovable, v0, etc.) produce **different outputs for the 
 
 Markdown Cartridges are **deterministic, versioned building blocks** that enforce consistent output across all AI coding tools. Think of them as contracts that lock in your technical choices.
 
-### How It Works
+### Two-Tier System
 
-1. **Pick a stack preset** that defines your tech choices (`/stacks/*.yml`)
-2. **Choose cartridges** from the appropriate tier (prototype → productizing → production)
-3. **Paste into your AI tool** with your specific inputs
-4. **Get consistent output** - same structure, same conventions, every time
+We use a simple two-tier approach:
+
+1. **🎨 Prototyping** - Frontend-only with mock data for rapid UI/UX iteration
+2. **🚀 Production** - Full-stack with real backend for deployable applications
 
 ## Quick Start
 
-### 1. Using a Cartridge in Cursor/Lovable/v0
+### Option 1: Use Ready-to-Copy Prompts (Easiest!)
 
-```markdown
-# Paste this first (loader):
-You are an AI coding assistant. Follow the "Cartridge" strictly.
-If a default in your tool conflicts with the Cartridge, the Cartridge wins.
-Acknowledge by listing which sections you read.
+We provide complete, self-contained prompts ready to copy-paste:
 
-# Then paste the cartridge content from /cartridges/<tier>/<name>.md
+```bash
+# For UI Mockups (no backend):
+1. Open: cartridges/ready-to-use/prototyping/1-next-mockup.md
+2. Copy ALL content (Cmd+A, Cmd+C)
+3. Paste into Cursor/Lovable/v0
+4. Customize the inputs section
+5. Press Enter → Beautiful mockup with fake data!
 
-# Finally, add your inputs:
-## Inputs
-appName: MyAwesomeApp
-primaryColor: blue-600
-features: [auth, dashboard, settings]
+# For Full-Stack Apps (with backend):
+1. Open: cartridges/ready-to-use/production/1-next-full-stack.md
+2. Copy ALL content (Cmd+A, Cmd+C)
+3. Paste into Cursor/Lovable/v0
+4. Customize the inputs section
+5. Press Enter → Complete deployable application!
 ```
 
-### 2. Example Stack + Cartridge Combo
+### Option 2: Use Individual Cartridges
 
-**Stack:** `next-react-trpc-prisma` (from `/stacks/next-react-trpc-prisma.yml`)
-**Cartridge:** `cartridges/productizing/next-baseline.md`
-**Result:** Consistent Next.js app with TypeScript, tRPC, Prisma, and your team's exact conventions
+For more control, use the cartridge system directly:
+
+```markdown
+# Paste this loader first:
+You are an AI coding assistant. Follow the "Cartridge" strictly.
+If a default in your tool conflicts with the Cartridge, the Cartridge wins.
+
+# Then paste a cartridge from /cartridges/<tier>/<name>.md
+
+# Finally add your inputs:
+## My Inputs
+appName: MyAwesomeApp
+primaryColor: indigo
+features: [dashboard, user-management, analytics]
+```
 
 ## Repository Structure
 
 ```
 cartridges/
-├── prototype/        # Fast iteration, minimal guardrails
-├── productizing/     # Team-ready with tests and CI
-└── production/       # Strict, observable, enterprise-grade
+├── prototyping/     # Frontend-only with mock data
+│   ├── next-baseline.md
+│   └── dashboard-mockup.md
+├── production/      # Full-stack with real backend
+│   ├── next-baseline.md
+│   └── crud-resource.md
+└── ready-to-use/    # Complete copy-paste prompts
+    ├── prototyping/
+    │   └── 1-next-mockup.md    # Full mockup prompt
+    └── production/
+        └── 1-next-full-stack.md # Full app prompt
 
 stacks/              # Tech stack presets (YAML)
 validators/          # Cartridge linting and validation
@@ -67,25 +90,66 @@ tools/              # Helper prompts and loaders
 docs/               # Guides and examples
 ```
 
-## Cartridge Tiers
+## Cartridge Tiers Explained
 
-### 🚀 Prototype
-- **Goal:** Speed and experimentation
-- **Use when:** Building POCs, hackathons, exploring ideas
-- **Guardrails:** Minimal
-- **Testing:** Sanity checks only
+### 🎨 Prototyping Tier
+- **Purpose:** Rapid UI/UX validation with beautiful mockups
+- **Backend:** None - frontend only with mock data
+- **Database:** None - uses localStorage for persistence
+- **Authentication:** Fake auth with localStorage
+- **Use Cases:** 
+  - Design sprints and workshops
+  - Client demos and presentations
+  - Concept validation
+  - User testing
+  - Investor pitches
+- **Output:** Interactive, beautiful mockups that look real
+- **Time to Result:** ~5 minutes
 
-### 🏗️ Productizing
-- **Goal:** Team collaboration
-- **Use when:** Building features with a team
-- **Guardrails:** Enforced conventions, PR checklists
-- **Testing:** Unit + integration tests required
+### 🚀 Production Tier
+- **Purpose:** Build real, deployable applications
+- **Backend:** Complete with API, database, auth
+- **Database:** PostgreSQL with Prisma ORM
+- **Authentication:** Real OAuth and session management
+- **Use Cases:**
+  - SaaS applications
+  - Enterprise software
+  - Startup MVPs
+  - Production deployments
+- **Output:** Full-stack applications ready for Vercel
+- **Time to Result:** ~15 minutes
 
-### 🏭 Production
-- **Goal:** Enterprise reliability
-- **Use when:** Mission-critical features
-- **Guardrails:** Strict validation, observability required
-- **Testing:** Full test pyramid + performance budgets
+## How It Works
+
+### Prototyping Workflow
+```mermaid
+1. Need to validate UI/UX?
+   ↓
+2. Copy prototyping prompt
+   ↓
+3. Paste into AI tool
+   ↓
+4. Get beautiful mockup with fake data
+   ↓
+5. Show to stakeholders
+   ↓
+6. Iterate on design
+```
+
+### Production Workflow
+```mermaid
+1. Ready to build real app?
+   ↓
+2. Copy production prompt
+   ↓
+3. Paste into AI tool
+   ↓
+4. Get full-stack application
+   ↓
+5. Configure environment
+   ↓
+6. Deploy to Vercel
+```
 
 ## Available Stacks
 
@@ -96,51 +160,69 @@ docs/               # Guides and examples
 | `nuxt-vue-pinia-drizzle` | Nuxt 3 | Pinia | Nitro | Drizzle + Postgres | Cloudflare |
 | `sveltekit-edge-drizzle` | SvelteKit | Built-in | REST | Drizzle + D1 | Cloudflare Workers |
 
-## Core Concepts
+## Real-World Example: Building a Startup
 
-### Stack Contract
-Every cartridge declares a **hard contract** about technical choices:
-- Runtime & package manager (Node/Bun, npm/pnpm/yarn)
-- Language & strictness (JS/TS)
-- Framework & routing mode
-- UI & styling system
-- State management & data fetching
-- API patterns & database
-- Auth, testing, linting, deployment
+Let's say you receive this prompt:
 
-### Guardrails
-Cartridges include **forbidden choices** to prevent drift:
-- "Never use Vue components in a React stack"
-- "Block REST if tRPC is selected"
-- "No Pages Router if using App Router"
+> "Build me portfolioagents.io - a startup that turns resumes into AI-powered portfolio sites"
 
-### Quality Gates
-Each cartridge defines **must-pass checks**:
+### Step 1: Start with Prototyping (5 minutes)
 ```bash
-pnpm lint && pnpm typecheck && pnpm test
+# Validate the UI/UX first
+1. Copy cartridges/ready-to-use/prototyping/1-next-mockup.md
+2. Paste into Cursor
+3. Customize inputs with your branding
+4. Get beautiful mockup to show stakeholders
 ```
 
-## Contributing
+### Step 2: Build Production Version (15 minutes)
+```bash
+# Once design is approved
+1. Copy cartridges/ready-to-use/production/1-next-full-stack.md
+2. Paste into Cursor
+3. Customize with real features
+4. Deploy to production
+```
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+## Key Benefits
 
-### Adding a New Cartridge
+### Why Two Tiers?
+- **Clear Separation:** Mock data vs Real backend - no confusion
+- **Faster Iteration:** Validate UI before building backend
+- **Better Workflow:** Design → Approve → Build
+- **Cost Effective:** Don't build backend until design is validated
 
-1. Copy `/cartridges/_schema.md` to the appropriate tier
-2. Fill in all required sections
-3. Validate locally: `node validators/cartridge-lint.js your-cartridge.md`
-4. Open a PR with the `cartridge` label
+### Why Ready-to-Use?
+- **Zero Assembly:** Complete prompts, not fragments
+- **Self-Contained:** Everything in one file
+- **Beginner Friendly:** Just copy and paste
+- **Time Saving:** No need to understand cartridge system
 
-### Proposing a New Stack
+## Core Concepts
 
-1. Open a "Stack Proposal" issue
-2. Define all technical choices
-3. List forbidden patterns
-4. Get consensus from 2+ maintainers
+### Deterministic Output
+Every cartridge specifies exact:
+- Tech stack choices
+- File structure
+- Naming conventions
+- Code patterns
+- Testing approach
 
-## Why "VibeCore"?
+### Guardrails
+Cartridges include "forbidden" lists to prevent drift:
+- No Vue in React projects
+- No npm if using pnpm
+- No Pages Router if using App Router
 
-"Vibe coding" is writing code through natural language with AI assistance. It's fast and creative but historically unreliable. VibeCore makes vibe coding **deterministic** - keeping the speed while adding predictability.
+### Quality Gates
+Each cartridge defines validation steps:
+```bash
+# Prototyping
+pnpm build  # Just needs to build
+
+# Production
+pnpm lint && pnpm typecheck && pnpm test
+```
 
 ## Philosophy
 
@@ -148,18 +230,46 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 - **Explicit > Implicit**: All choices are declared, not inferred
 - **Versioned > Latest**: Lock versions to prevent drift
 - **Tool-agnostic > Tool-specific**: Works across all AI coding tools
-- **Team-first > Solo**: Built for collaboration and handoffs
+- **Simple > Complex**: Two tiers instead of many
+
+## Getting Started
+
+### For Designers/PMs (Prototyping)
+1. Open `cartridges/ready-to-use/prototyping/`
+2. Copy the entire markdown file
+3. Paste into any AI coding tool
+4. Customize the inputs
+5. Get your mockup!
+
+### For Developers (Production)
+1. Open `cartridges/ready-to-use/production/`
+2. Copy the entire markdown file
+3. Paste into any AI coding tool
+4. Customize the inputs
+5. Deploy your app!
 
 ## Roadmap
 
-- [x] Core cartridge schema
-- [x] Prototype tier cartridges
-- [ ] Productizing tier cartridges
-- [ ] Production tier cartridges
+- [x] Core cartridge schema  
+- [x] Prototyping tier (frontend-only with mock data)
+- [x] Production tier (full-stack applications)
+- [x] Ready-to-use copy-paste prompts
+- [x] Real-world startup examples
+- [ ] More example cartridges
 - [ ] VS Code extension for cartridge management
-- [ ] CI/CD integration examples
-- [ ] Cartridge composition system
-- [ ] Version migration tooling
+- [ ] Web-based cartridge builder
+- [ ] Community cartridge marketplace
+
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Quick Contribution Guide
+1. Choose a tier (prototyping or production)
+2. Copy the schema from `/cartridges/_schema.md`
+3. Fill in all sections
+4. Validate: `npm run lint:cartridge your-cartridge.md`
+5. Submit PR
 
 ## License
 
@@ -171,8 +281,12 @@ MIT - See [LICENSE](LICENSE) for details
 
 ## Acknowledgments
 
-Built in response to the real pain of AI coding inconsistency. Special thanks to teams who shared their "drift horror stories" and helped shape this solution.
+Built to solve the real pain of AI coding inconsistency. Special thanks to teams who shared their "drift horror stories" and helped shape this solution.
 
 ---
 
-**Ready to lock your vibe?** Start with our [quickstart guide](docs/overview.md) →
+**Ready to make your AI coding deterministic?** 
+
+🎨 **Start prototyping** → [Copy a mockup prompt](cartridges/ready-to-use/prototyping/)
+
+🚀 **Build production** → [Copy a full-stack prompt](cartridges/ready-to-use/production/)

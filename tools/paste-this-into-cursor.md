@@ -109,6 +109,42 @@ pnpm test
 pnpm build
 ```
 
+## Working with Complex Startup Ideas
+
+When you receive a complex prompt like "Build me an AI-powered SaaS that does X, Y, and Z", follow this approach:
+
+### 1. Break It Down
+Don't try to build everything at once. Instead:
+- Identify core features
+- Choose the right stack and tier
+- Apply cartridges incrementally
+- Use mock data initially
+
+### 2. Example: portfolioagents.io
+
+**Original Request**: 
+> "Build a startup that turns resumes into AI-powered portfolio sites with an agent that answers questions"
+
+**VibeCore Approach**:
+```markdown
+# Step 1: Foundation (apply first)
+[Paste next-baseline cartridge]
+Inputs: appName: portfolioagents
+
+# Step 2: Data Model (apply second)
+[Paste crud-trpc-prisma for Resume]
+Inputs: resourceName: Resume, fields: [...]
+
+# Step 3: UI with Mock Data (apply third)
+Create dashboard with mock data:
+const mockResume = { ... }
+
+# Step 4: Integrate Real Features (apply last)
+Connect upload, add AI chat, etc.
+```
+
+See [Full Startup Example](../docs/startup-example.md) for complete details.
+
 ## Common Patterns
 
 ### For CRUD Operations
